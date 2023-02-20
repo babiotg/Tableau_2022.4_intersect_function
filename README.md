@@ -12,10 +12,10 @@ The Interactive Visualization Dashboard can be displayed at the link [Health Sta
 3. The analysis purpose was to verify the **health state of the trees in the selected area**.
   
 This is the **Dashboard**:
-<img style="margin: 20px" src="img/Dashboard.jpg" alt="Dashboard: Health State of New York trees (2015 census)" width="90%">
+<img src="img/Dashboard.jpg" alt="Dashboard: Health State of New York trees (2015 census)" width="90%">
 
 This is a **zoom** of the health state of tree in the selected zone:
-<img style="margin: 20px" src="img/Detail_Health_Tree_State.jpg" alt="Detail Health State of Trees" width="90%">
+<img src="img/Detail_Health_Tree_State.jpg" alt="Detail Health State of Trees" width="90%">
 
 ## Project details
 
@@ -29,21 +29,20 @@ This is the code for the **Intersection** calculated field and for all other cal
 
 <dl>
     <dt><strong>Intersection</strong></dt>
-    <dd><span style="font-family:Courier New;">
-        <span style="color:#377E9C;">INTERSECTS</span>(<span style="color:#F18A34">[Buffer]</span>,<span style="color:#F18A34">[Geometry]</span>)</span></dd>
+    <dd><code>INTERSECTS([Buffer],[Geometry])</code>
     <dt><strong>Buffer</strong></dt>
-        <dd><span style="font-family:Courier New;"><span style="color:#377E9C;">BUFFER</span>(<span style="color:#377E9C;">MAKEPOINT</span>(<span style="color:#F18A34">[Lat]</span>,<span style="color:#F18A34">[Long]</span>),<span style="color:#936EB0">[Radius (km)]</span>,<span style="color:#717171">'km'</span>)</span></dd>
+        <dd><code>BUFFER(MAKEPOINT([Lat],[Long]),[Radius (km)],'km')</code></dd>
     <dt><strong>Lat</strong></dt>
-        <dd><span style="font-family:Courier New;"><span style="color:#377E9C;">FLOAT</span>(<span style="color:#377E9C">SPLIT</span>(<span style="color:#936EB0">[Point_Of_Interest]</span>,<span style="color:#717171">','</span>,1))</span></dd>
+       <dd><code>FLOAT(SPLIT([Point_Of_Interest],',',1))</code></dd>
     <dt><strong>Long</strong></dt>
-        <dd><span style="font-family:Courier New;"><span style="color:#377E9C;">FLOAT</span>(<span style="color:#377E9C">SPLIT</span>(<span style="color:#936EB0">[Point_Of_Interest]</span>,<span style="color:#717171">','</span>,2))</span></dd>
+        <dd><code>FLOAT(SPLIT([Point_Of_Interest],',',2))</code></dd>
 </dl>
 
 * The **Geometry** field is native from the data source and its datatype is Point (a spatial object defined by latitude and longitude).
 * The **Buffer** field is a calculated field (as shown above) and its datatype is Polygon (a spatial circular shape defined by a Point at the center, and a radius as distance from the center).
   
   
-<img style="border: 1px solid #DDDDDD; margin: 20px" src="img/data_source_table.jpg" alt="Data Source Table with native Geometry field" width="90%">
+<img src="img/data_source_table.jpg" alt="Data Source Table with native Geometry field" width="90%" >
   
   
 The other calculated fields present in the Tableau notebook are the typical Level Of Details to calculate the statistical data considering both the trees within the selected area and those present in the entire dataset.
